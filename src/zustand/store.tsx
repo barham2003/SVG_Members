@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 type Language = {
-  lang: "english" | "kurdish";
+  lang: "eng" | "kur";
   changeToKurdish: () => void;
   changeToEnglish: () => void;
 };
 
-const useLanguage = create<Language>()((set) => ({
-  lang: "kurdish",
-  changeToKurdish: () => set((state) => ({ lang: "kurdish" })),
-  changeToEnglish: () => set((state) => ({ lang: "english" })),
+export const useLanguage = create<Language>()((set) => ({
+  lang: "kur",
+  changeToKurdish: () => set((state) => ({ lang: "kur" })),
+  changeToEnglish: () => set((state) => ({ lang: "eng" })),
 }));
