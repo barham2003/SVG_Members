@@ -1,5 +1,10 @@
-import React from "react";
+import type ParamsType from "../paramsType";
+import ProfilePage from "./profile-page";
 
-export default function page() {
-  return <form>page</form>;
+export default function page({ params: { lang } }: ParamsType) {
+  return (
+    <>
+      <ProfilePage lang={lang} />
+    </>
+  );
 }

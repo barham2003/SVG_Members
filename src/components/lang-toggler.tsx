@@ -15,7 +15,6 @@ import { usePathname } from "next/navigation";
 export default function LangToggler() {
   const pathname = usePathname();
   const lang = pathname.split("/")[1];
-  console.log("LANG: ", lang);
   const dPath = pathname.split("/").slice(2).toString();
   return (
     <div>
