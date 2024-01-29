@@ -8,9 +8,9 @@ export default function layout({
   params: { lang: "eng" | "kur" };
 }>) {
   return (
-    <div>
+    <>
       <Navbar lang={lang} />
-      {children}
-    </div>
+      <div className="p-6">{children}</div>
+    </>
   );
 }

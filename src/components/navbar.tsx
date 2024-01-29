@@ -10,7 +10,7 @@ export default function Navbar({ lang }: { lang: "kur" | "eng" }) {
   return (
     <nav
       className={twMerge(
-        "flex h-16 w-full justify-between bg-blue-900 px-4 text-xl",
+        "flex h-16 w-full justify-between bg-black px-4 text-xl",
         isKurdish && "flex-row-reverse",
       )}
     >

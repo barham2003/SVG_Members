@@ -8,12 +8,12 @@ export function getNavLinks(lang: "kur" | "eng"): NavItem[] {
     return [
       { item: "سەرەکی", href: `/${lang}/` },
       { item: "پرۆفایڵ", href: `/${lang}/profile` },
-      { item: "پۆستەکان", href: `/${lang}/posts` },
+      { item: "چالاكیەکان", href: `/${lang}/posts` },
     ];
 
   return [
     { item: "Home", href: `/${lang}/` },
     { item: "Profile", href: `/${lang}/profile` },
-    { item: "Posts", href: `/${lang}/posts` },
+    { item: "Activities", href: `/${lang}/posts` },
   ];
 }

@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { useLanguage } from "@/zustand/store";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function LangToggler() {
-  const { lang, changeToEnglish, changeToKurdish } = useLanguage();
   const pathname = usePathname();
+  const lang = pathname.split("/")[1];
+  console.log("LANG: ", lang);
   const dPath = pathname.split("/").slice(2).toString();
   return (
     <div>
