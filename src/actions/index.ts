@@ -1,12 +1,12 @@
 "use server";
-
+const ApiURL = "http://localhost:3001";
 import { signIn, signOut } from "@/app/auth";
 import { notFound, redirect } from "next/navigation";
 
 export async function getProfile(id: string) {
   if (!id) return notFound();
 
-  const res = await fetch(`http://localhost:3001/members/${id}`, {
+  const res = await fetch(`${ApiURL}/members/${id}`, {
     next: { revalidate: 3600 },
   });
 
@@ -39,4 +39,10 @@ export async function Login(
 export async function Logout(lang: "kur" | "eng") {
   await signOut();
   redirect(`/${lang}/profile`);
+}
+
+export async function getActivities() {
+  const res = await fetch(`${ApiURL}/posts`);
+  const { data } = await res.json();
+  return data;
 }

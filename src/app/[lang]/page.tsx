@@ -14,20 +14,19 @@ export default async function Home({ params: { lang } }: ParamsType) {
       <div
         className={twMerge(
           "flex flex-col gap-8",
-          "leading-relaxedz text-2xl",
+          "text-justify text-lg leading-relaxed md:text-2xl",
           isKurdish && "text-right",
         )}
       >
-        {/* <h1>{isKurdish ? "گرووپی خۆبەخشی سماڕت" : "Smart Volunteers Group"}</h1> */}
         <Image alt="svg-main" width="700" src={svgMain} />
         <section className=" space-y-4">
-          <h2 className="text-6xl font-bold">
+          <h2 className="text-3xl font-bold md:text-6xl">
             {isKurdish ? "ئێمە کێین؟" : "Who are we?"}
           </h2>
           <p>{defenition}</p>
         </section>
-        <section>
-          <h2 className="text-6xl font-bold">
+        <section className=" space-y-4">
+          <h2 className="text-3xl font-bold md:text-6xl">
             {isKurdish ? "چی دەکەین؟" : "What we do?"}
           </h2>
           <ul className="space-y-4">
