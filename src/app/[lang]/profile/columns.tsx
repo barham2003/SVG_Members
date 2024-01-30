@@ -9,6 +9,10 @@ export type Activity = {
   role: string;
   title: string;
   points: number;
+  project: {
+    date: Date;
+    title: string;
+  };
 };
 
 export const columns: ColumnDef<Activity>[] = [
@@ -24,9 +28,42 @@ export const columns: ColumnDef<Activity>[] = [
     accessorKey: "points",
     header: "Points",
   },
+  {
+    accessorKey: "project.date",
+    header: "Date",
+    cell: ({ row }) => {
+      const date = row.original.project.date;
+
+      let formatted;
+      if (date instanceof Date || typeof date === "string") {
+        formatted = new Date(date).toLocaleDateString();
+      } else {
+        formatted = new Date().toLocaleDateString();
+      }
+
+      return <span>{formatted}</span>;
+    },
+  },
 ];
 
 export const Krdcolumns: ColumnDef<Activity>[] = [
+  {
+    accessorKey: "project.date",
+    header: "بەروار",
+    cell: ({ row }) => {
+      const date = row.original.project.date;
+
+      let formatted;
+      if (date instanceof Date || typeof date === "string") {
+        formatted = new Date(date).toLocaleDateString();
+      } else {
+        formatted = new Date().toLocaleDateString();
+      }
+
+      return <span>{formatted}</span>;
+    },
+  },
+
   {
     accessorKey: "points",
     header: "پۆینت",

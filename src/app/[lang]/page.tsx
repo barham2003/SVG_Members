@@ -5,7 +5,7 @@ import svgMain from "/public/svg-enhance.jpg";
 import { twMerge } from "tailwind-merge";
 import { getOurWork } from "@/static-data/ourWork";
 
-export default function Home({ params: { lang } }: ParamsType) {
+export default async function Home({ params: { lang } }: ParamsType) {
   const defenition = getDefinition(lang);
   const ourWorks = getOurWork(lang);
   const isKurdish = lang === "kur";
@@ -14,7 +14,7 @@ export default function Home({ params: { lang } }: ParamsType) {
       <div
         className={twMerge(
           "flex flex-col gap-8",
-          "leading-relaxedz text-3xl",
+          "leading-relaxedz text-2xl",
           isKurdish && "text-right",
         )}
       >

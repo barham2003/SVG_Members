@@ -1,30 +1,42 @@
 "use server";
 
-interface FormProps {
-  data?: any;
-  message?: any;
-  status: "success" | "pending" | "fail";
-}
+import { signIn, signOut } from "@/app/auth";
+import { notFound, redirect } from "next/navigation";
 
-export async function getProfile(
-  formState: FormProps,
-  formData: FormData,
-): Promise<FormProps> {
-  const id = formData.get("memberId");
-
-  if (!id)
-    return {
-      message: "Please fill all fields",
-      status: "fail",
-    };
+export async function getProfile(id: string) {
+  if (!id) return notFound();
 
   const res = await fetch(`http://localhost:3001/members/${id}`, {
-    next: { revalidate: 0 },
+    next: { revalidate: 3600 },
   });
 
   const json = await res.json();
 
-  if (!res.ok) return { message: json.message, status: "fail" };
+  if (!res.ok) return notFound();
 
-  return { data: json.data, status: "success" };
+  return json.data;
+}
+
+interface AnotherFormProps {
+  message: string;
+}
+
+export async function Login(
+  formState: AnotherFormProps,
+  formData: FormData,
+): Promise<AnotherFormProps> {
+  const id = formData.get("id") as string;
+  try {
+    await signIn("credentials", { id, redirect: false });
+  } catch (e) {
+    console.log(e);
+    return { message: "Incorrect" };
+  }
+
+  redirect("/kur/profile");
+}
+
+export async function Logout() {
+  await signOut();
+  redirect("/kur");
 }
