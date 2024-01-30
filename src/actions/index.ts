@@ -26,17 +26,17 @@ export async function Login(
   formData: FormData,
 ): Promise<AnotherFormProps> {
   const id = formData.get("id") as string;
+  const lang = formData.get("lang") as string;
   try {
     await signIn("credentials", { id, redirect: false });
   } catch (e) {
-    console.log(e);
-    return { message: "Incorrect" };
+    return { message: "Incorrect ID, please try again." };
   }
 
-  redirect("/kur/profile");
+  redirect(`/${lang}/profile`);
 }
 
-export async function Logout() {
+export async function Logout(lang: "kur" | "eng") {
   await signOut();
-  redirect("/kur");
+  redirect(`/${lang}/profile`);
 }
