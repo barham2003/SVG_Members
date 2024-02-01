@@ -1,16 +1,57 @@
-export function getOurWork(lang: "kur" | "eng"): string[] {
+import helpOne from "/public/help-one.png";
+import helpStudent from "/public/help-student.jpg";
+import seminar from "/public/seminar.jpg";
+import tree from "/public/tree.jpg";
+
+interface Work {
+  text: string;
+  img: any;
+}
+export function getOurWork(lang: "kur" | "eng"): Work[] {
   if (lang === "kur") {
     return [
-      "١ - هاوکاری کردنی کەسانی هەژار و کەم دەرامەت لە پێناو باشترکردنی حاڵ و گوزەرانیان",
-      "٢ - هاوکاری کردنی ئەو خوێندکارانەی توانای ئابووری باش نیە لە ڕێگای گرتنی وانەی تایبەت و خولی بەهێزکردن و دابینکردنی کرێی هاتووچۆ",
-      "٣ - ئەنجامدانی ئیڤێنت و چالاکی بەهێزکردنی ئاستی هۆشیاری کۆمەڵگا بە گشتی و گەنجان بە تایبەتی",
-      "٤ - بەشداری کردن لە چالاکیە ژینگەییەکان و ئەو کارانەی بەشدارن لە باشترکردنی کۆمەڵگا",
+      {
+        text: "١ - هاوکاری کردنی کەسانی هەژار و کەم دەرامەت لە پێناو باشترکردنی حاڵ و گوزەرانیان",
+        img: helpOne,
+      },
+      {
+        text: "٢ - هاوکاری کردنی ئەو خوێندکارانەی توانای ئابووری باش نیە لە ڕێگای گرتنی وانەی تایبەت و خولی بەهێزکردن و دابینکردنی کرێی هاتووچۆ",
+        img: helpStudent,
+      },
+      {
+        text: "٣ - ئەنجامدانی ئیڤێنت و چالاکی بەهێزکردنی ئاستی هۆشیاری کۆمەڵگا بە گشتی و گەنجان بە تایبەتی",
+        img: seminar,
+      },
+      {
+        text: "٤ - بەشداری کردن لە چالاکیە ژینگەییەکان و ئەو کارانەی بەشدارن لە باشترکردنی کۆمەڵگا",
+        img: tree,
+      },
     ];
   }
+
   return [
-    "1. Helping the poor and low-income people in order to improve their livelihoods.",
-    "2. Assisting students with limited financial means by taking private lessons, reinforcement courses and providing transportation fees.",
-    "3. Conducting events and activities to strengthen the level of awareness of the society in general and the youth in particular.",
-    "4. Participation in environmental activities and activities that contribute to the improvement of society.",
+    {
+      text: "1. Helping the poor and low-income people in order to improve their livelihoods.",
+      img: helpOne,
+    },
+    {
+      text: "2. Assisting students with limited financial means by taking private lessons, reinforcement courses and providing transportation fees.",
+      img: helpStudent,
+    },
+    {
+      text: "3. Conducting events and activities to strengthen the level of awareness of the society in general and the youth in particular.",
+      img: seminar,
+    },
+    {
+      text: "4. Participation in environmental activities and activities that contribute to the improvement of society.",
+      img: tree,
+    },
   ];
+}
+
+export function workDefintion(lang: "kur" | "eng") {
+  if (lang === "kur")
+    return "کارەکانی ئێمە هەمە جۆرە و هەوڵمانداوە لە زۆربەی کایەکانی ژیانەوە یارمەتی شارەکەمان بدەین، لیستی بەشێك لەو جۆرە چالاکیانەی ساڵانە ئەنجامی دەدەین";
+
+  return "Our work is diverse and we have tried to help our city in many areas of life, examples are: ";
 }

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { DataTable } from "./activity-table";
 import { Krdcolumns, columns } from "./columns";
 import { twMerge } from "tailwind-merge";
@@ -19,7 +18,9 @@ export default function ProfilePage({
         <div className=" flex flex-col justify-start gap-4">
           <h1 className="text-2xl">{member.name}</h1>
           <form action={Logout.bind(null, lang)}>
-            <FormButton variant="destructive">Sign out</FormButton>
+            <FormButton variant="destructive">
+              {isKrd ? "چوونە دەرەوە" : "Sign Out"}
+            </FormButton>
           </form>
         </div>
 

@@ -34,6 +34,7 @@ export async function Login(
   }
 
   redirect(`/${lang}/profile`);
+  return { message: "" };
 }
 
 export async function Logout(lang: "kur" | "eng") {
@@ -45,4 +46,21 @@ export async function getActivities() {
   const res = await fetch(`${ApiURL}/posts`);
   const { data } = await res.json();
   return data;
+}
+
+export async function addForm(
+  formState: AnotherFormProps,
+  formData: FormData,
+): Promise<AnotherFormProps> {
+  const data = Object.fromEntries(formData);
+  console.log(data);
+  const res = await fetch(`${ApiURL}/forms`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const json = await res.json();
+  return { message: json.message };
 }

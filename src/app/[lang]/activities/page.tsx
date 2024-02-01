@@ -32,3 +32,13 @@ export default async function page() {
     </div>
   );
 }
+
+export async function generateStaticParams() {
+  const langs = ["kur", "eng"];
+
+  return langs.map((lang: any) => {
+    return {
+      lang,
+    };
+  });
+}

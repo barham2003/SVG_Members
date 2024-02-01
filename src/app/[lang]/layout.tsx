@@ -1,4 +1,6 @@
 import Navbar from "@/components/navbar";
+import NextTopLoader from 'nextjs-toploader';
+
 
 export default function layout({
   children,
@@ -11,6 +13,7 @@ export default function layout({
     <>
       <Navbar lang={lang} />
       <div className="p-6">{children}</div>
+      <NextTopLoader />
     </>
   );
 }
