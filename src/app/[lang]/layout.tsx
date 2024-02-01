@@ -13,7 +13,7 @@ export default function layout({
     <>
       <Navbar lang={lang} />
       <div className="p-6">{children}</div>
-      <NextTopLoader />
+      <NextTopLoader color="white" />
     </>
   );
 }

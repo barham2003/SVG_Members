@@ -1,5 +1,6 @@
 "use server";
-const ApiURL = "http://localhost:3001";
+// import "dotenv";
+const ApiURL = process.env.API_URL;
 import { signIn, signOut } from "@/app/auth";
 import { notFound, redirect } from "next/navigation";
 
@@ -62,5 +63,8 @@ export async function addForm(
     body: JSON.stringify(data),
   });
   const json = await res.json();
-  return { message: json.message };
+  if (res.ok) return { message: "Done" };
+  if (!res.ok) return { message: json.message };
+
+  return { message: "" };
 }
