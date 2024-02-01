@@ -1,5 +1,5 @@
 "use server";
-// import "dotenv";
+import "dotenv";
 const ApiURL = process.env.API_URL;
 import { signIn, signOut } from "@/app/auth";
 import { notFound, redirect } from "next/navigation";
