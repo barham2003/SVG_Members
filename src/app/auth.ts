@@ -1,6 +1,7 @@
-import NextAuth, { NextAuthConfig } from "next-auth";
+import NextAuth from "next-auth";
 import Creds from "next-auth/providers/credentials";
-
+import "dotenv";
+const ApiURL = process.env.API_URL;
 export const {
   auth,
   signIn,
@@ -16,9 +17,7 @@ export const {
       async authorize(credentials, req): Promise<any> {
         console.log("CREDS: ", credentials);
         if (!credentials.id) return null;
-        const res = await fetch(
-          `http://localhost:3001/members/${credentials.id}`,
-        );
+        const res = await fetch(`${ApiURL}/members/${credentials.id}`);
         const json = await res.json();
         if (!res.ok) return null;
 
