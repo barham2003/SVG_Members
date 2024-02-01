@@ -19,26 +19,26 @@ export function CarouselPlugin({ images }: { images: string[] }) {
 
   return (
     <Carousel
+      className="w-full "
       plugins={[plugin.current]}
-      className="w-full max-w-xs"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {images.map((src, index) => (
-          <CarouselItem key={index} className="w-full">
+          <CarouselItem key={index}>
             <Image
               src={src}
-              height="500"
-              width="500"
+              height={600}
+              width={600}
               alt="Image"
               className="rounded-sm"
             />
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious variant="none" />
+      <CarouselNext variant="none" />
     </Carousel>
   );
 }
