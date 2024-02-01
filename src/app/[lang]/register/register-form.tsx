@@ -70,7 +70,7 @@ export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
 
         <Select>
           <SelectTrigger className={isKrd ? "flex-row-reverse" : ""}>
-            <SelectValue placeholder={isKrd ? "ڕەگەرز" : "Gender"} />
+            <SelectValue placeholder={isKrd ? "ڕەگەز" : "Gender"} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem
