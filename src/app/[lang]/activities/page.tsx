@@ -20,7 +20,7 @@ interface Post {
 export default async function page() {
   const posts: Post[] = await getActivities();
   return (
-    <div className="flex flex-col items-center text-right">
+    <div className="flex flex-col items-center text-right gap-3">
       {posts.map((post, index: number) => (
         <Card
           key={index}
