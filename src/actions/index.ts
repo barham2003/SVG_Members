@@ -45,7 +45,7 @@ export async function Logout(lang: "kur" | "eng") {
 
 export async function getActivities() {
   const res = await fetch(`${ApiURL}/posts`, {
-    next: { revalidate: 300 },
+    next: { revalidate: 90 },
   });
 
   const { data } = await res.json();
