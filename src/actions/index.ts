@@ -8,7 +8,7 @@ export async function getProfile(id: string) {
   if (!id) return notFound();
 
   const res = await fetch(`${ApiURL}/members/${id}`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
 
   const json = await res.json();
@@ -44,7 +44,10 @@ export async function Logout(lang: "kur" | "eng") {
 }
 
 export async function getActivities() {
-  const res = await fetch(`${ApiURL}/posts`);
+  const res = await fetch(`${ApiURL}/posts`, {
+    next: { revalidate: 300 },
+  });
+
   const { data } = await res.json();
   return data;
 }
