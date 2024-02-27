@@ -36,20 +36,21 @@ export default function SigninForm({ lang }: { lang: "kur" | "eng" }) {
           />
           <input type="text" name="lang" defaultValue={lang} hidden />
           <FormButton>{isKrd ? "بچۆ ژوورەوە" : "Sign In"}</FormButton>
-          <p className={twMerge("text-left", isKrd && "text-right")}>
-            <Link
-              href={isKrd ? "/kur/register" : "/eng/register"}
-              className=" text-[#042c61]"
-            >
-              {isKrd
-                ? "کلیك لێرە بکە بۆ بەشداری کردن"
-                : "Click here to Sign Up"}
-            </Link>
-          </p>
         </div>
+
+        <p className={twMerge("w-full text-left", isKrd && "text-right")}>
+          <Link
+            href={isKrd ? "/kur/register" : "/eng/register"}
+            className=" text-right text-[#042c61]"
+          >
+            {isKrd ? "کلیك لێرە بکە بۆ بەشداری کردن" : "Click here to Sign Up"}
+          </Link>
+        </p>
         {state.message && (
           <Alert variant="destructive" className=" flex justify-center">
-            <AlertDescription>{state.message}</AlertDescription>
+            <AlertDescription>
+              {isKrd ? "ئایدیەکەت نەدۆزرایەوە" : state.message}
+            </AlertDescription>
           </Alert>
         )}
       </form>
