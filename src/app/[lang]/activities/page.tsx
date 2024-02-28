@@ -20,7 +20,7 @@ interface Post {
 export default async function page() {
   const posts: Post[] = await getActivities();
   return (
-    <div className="flex flex-col items-center text-right gap-3">
+    <div className="flex flex-col items-center gap-3 text-right">
       {posts.map((post, index: number) => (
         <Card
           key={index}
@@ -34,8 +34,8 @@ export default async function page() {
               <CarouselPlugin images={post.photo} />
             </div>
           </CardContent>
-          <CardFooter className=" w-full items-start px-5 pb-4">
-            <p>{post.content}</p>
+          <CardFooter className="w-full items-start overflow-x-auto px-5 pb-4 text-right ">
+            <pre className="font-sans">{post.content}</pre>
           </CardFooter>
         </Card>
       ))}
