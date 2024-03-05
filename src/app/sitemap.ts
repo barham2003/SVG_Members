@@ -1,6 +1,6 @@
 export default function sitemap() {
   const krdUrl = "https://www.smartvolunteersgroup.com/kur";
-  const engUrl = "https://www.smartvolunteersgroup.com/kur";
+  const engUrl = "https://www.smartvolunteersgroup.com/eng";
   return [
     {
       url: krdUrl,
