@@ -35,7 +35,7 @@ export default async function page() {
             </div>
           </CardContent>
           <CardFooter className=" max-h-48 w-full items-start justify-end overflow-x-auto overflow-y-auto px-5 pb-4 text-right ">
-            <pre className="text-right font-sans">{post.content}</pre>
+            <pre className="w-full text-right font-sans">{post.content}</pre>
           </CardFooter>
         </Card>
       ))}
