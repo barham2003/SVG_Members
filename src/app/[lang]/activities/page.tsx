@@ -34,8 +34,10 @@ export default async function page() {
               <CarouselPlugin images={post.photo} />
             </div>
           </CardContent>
-          <CardFooter className=" max-h-48 w-full items-start justify-end overflow-x-auto overflow-y-auto px-5 pb-4 text-right ">
-            <pre className="w-full text-right font-sans">{post.content}</pre>
+          <CardFooter className="max-h-48 w-full items-start justify-end overflow-x-auto overflow-y-auto p-0 ">
+            <pre className="w-full font-sans text-xs lg:text-base">
+              {post.content}
+            </pre>
           </CardFooter>
         </Card>
       ))}
