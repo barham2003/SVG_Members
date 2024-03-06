@@ -74,13 +74,13 @@ export default async function Home({ params: { lang } }: ParamsType) {
                 )}
               >
                 <p className="lg:text-2xl">{work.text}</p>
-                <div className=" flex h-[320px] items-center">
-                  <Image
-                    src={work.img}
-                    className="max-h-[306px] min-h-[220px] w-auto"
-                    alt=""
-                  />
-                </div>
+                <Image
+                  src={work.img}
+                  className="max-h-[306px] min-h-[220px] w-auto"
+                  alt="smart volunteer work image"
+                  quality={80}
+                  loading="lazy"
+                />
               </li>
             ))}
           </ul>

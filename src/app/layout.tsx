@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Cairo as Roboto } from "next/font/google";
+import { Amiri as Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Smart Volunteers Group",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   ],
 };
 
-const robot = Roboto({
-  subsets: ["latin"],
+const roboto = Roboto({
+  subsets: ["latin-ext"],
   weight: ["400", "700"],
   variable: "--font-roboto",
 });
@@ -49,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${robot.className} font-sans`}>{children}</body>
+      <body className={`${roboto.className} font-sans`}>{children}</body>
     </html>
   );
 }
