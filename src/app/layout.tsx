@@ -39,7 +39,6 @@ export const metadata: Metadata = {
 const roboto = Roboto({
   subsets: ["latin-ext"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
 });
 
 export default function RootLayout({
