@@ -22,6 +22,11 @@ interface AnotherFormProps {
   message: string;
 }
 
+interface FormProps {
+  message: string;
+  status: string;
+}
+
 export async function Login(
   formState: AnotherFormProps,
   formData: FormData,
@@ -53,9 +58,9 @@ export async function getActivities() {
 }
 
 export async function addForm(
-  formState: AnotherFormProps,
+  formState: FormProps,
   formData: FormData,
-): Promise<AnotherFormProps> {
+): Promise<FormProps> {
   const data = Object.fromEntries(formData);
   console.log(data);
   const res = await fetch(`${ApiURL}/forms`, {
@@ -66,8 +71,8 @@ export async function addForm(
     body: JSON.stringify(data),
   });
   const json = await res.json();
-  if (res.ok) return { message: "Done" };
-  if (!res.ok) return { message: json.message };
+  if (res.ok) return { message: "Done", status: "success" };
+  if (!res.ok) return { message: json.message, status: "error" };
 
-  return { message: "" };
+  return { message: "", status: "success" };
 }

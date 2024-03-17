@@ -9,12 +9,25 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
+import { useEffect, useRef } from "react";
 export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
-  const [{ message }, formAction] = useFormState(addForm, { message: "" });
+  const [{ message, status }, formAction] = useFormState(addForm, {
+    message: "",
+    status: "",
+  });
+
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    if (status === "success" && formRef.current) {
+      formRef.current.reset();
+    }
+  }, [status]);
 
   return (
     <div className="flex w-full flex-col items-center">
       <form
+        ref={formRef}
         className=" relative flex w-full flex-col items-center gap-2 rounded-md border-2 bg-secondary/20  p-3 md:w-1/2"
         action={formAction}
       >
@@ -60,15 +73,24 @@ export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
           placeholder={isKrd ? "ژمارەی مۆبایل" : "Phone"}
         />
 
-        <Input
-          required
-          type="date"
-          className={`${isKrd ? "text-right" : ""} text-lg`}
-          name="birth"
-          placeholder={isKrd ? "بەرواری لەدایكبوون" : "Birth"}
-        />
+        <label
+          htmlFor="birthDate"
+          className={cn("w-full", isKrd && "text-right")}
+        >
+          <span className="px-2">
+            {isKrd ? ":بەرواری لەدایكبوون" : "Birth:"}
+          </span>
+          <Input
+            id="birthDate"
+            required
+            type="date"
+            className={`${isKrd ? "text-right" : ""} text-lg`}
+            name="birth"
+            placeholder={isKrd ? "بەرواری لەدایكبوون" : "Birth"}
+          />
+        </label>
 
-        <Select>
+        <Select name="gender">
           <SelectTrigger className={isKrd ? "flex-row-reverse" : ""}>
             <SelectValue placeholder={isKrd ? "ڕەگەز" : "Gender"} />
           </SelectTrigger>
