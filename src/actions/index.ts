@@ -1,7 +1,8 @@
 "use server";
 import "dotenv";
+import { cookies } from "next/headers";
 const ApiURL = process.env.API_URL;
-import { signIn, signOut } from "@/app/auth";
+// import { signIn, signOut } from "@/app/auth";
 import { notFound, redirect } from "next/navigation";
 
 export async function getProfile(id: string) {
@@ -27,25 +28,35 @@ interface FormProps {
   status: string;
 }
 
-export async function Login(
-  formState: AnotherFormProps,
-  formData: FormData,
-): Promise<AnotherFormProps> {
-  const id = formData.get("id") as string;
-  const lang = formData.get("lang") as string;
-  try {
-    await signIn("credentials", { id, redirect: false });
-  } catch (e) {
-    return { message: "Incorrect ID, please try again." };
-  }
+export async function Login(formState: AnotherFormProps, FormData: FormData) {
+  const id = FormData.get("id") as string;
+  const res = await fetch(`${ApiURL}/members/${id}?select=_id&populate=false`);
+  const json = await res.json();
+  if (!res.ok)
+    return {
+      message: json.message,
+      status: "error",
+    };
 
-  redirect(`/${lang}/profile`);
-  return { message: "" };
+  cookies().set("id", json.data._id, {
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30,
+    sameSite: "strict",
+    secure: true,
+    httpOnly: true,
+  });
+  return json;
 }
 
 export async function Logout(lang: "kur" | "eng") {
-  await signOut();
-  redirect(`/${lang}/profile`);
+  cookies().delete("id");
+  return redirect(`/${lang}/profile`);
+}
+
+export async function getSessionId(): Promise<null | string> {
+  const id = cookies().get("id")?.value;
+  if (!id) return null;
+  return id;
 }
 
 export async function getActivities() {
