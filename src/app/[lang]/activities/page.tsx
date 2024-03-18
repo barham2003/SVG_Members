@@ -21,7 +21,7 @@ export default async function page() {
   const posts: Post[] = await getActivities();
   return (
     <div className="flex flex-col items-center gap-3 text-right">
-      {posts.map((post, index: number) => (
+      {posts?.map((post, index: number) => (
         <Card
           key={index}
           className=" flex w-[300px] flex-col items-center gap-3 text-right md:w-[600px]"

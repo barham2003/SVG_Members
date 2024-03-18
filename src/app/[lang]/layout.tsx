@@ -1,23 +1,13 @@
 import Navbar from "@/components/navbar";
-import { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
+import { Amiri as Roboto } from "next/font/google";
 
-export const metadata: Metadata = {
-  openGraph: {
-    images: { url: "https://i.ibb.co/7VRM64d/image-2024-03-05-122753434.png" },
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Smart Volunteers Group",
-    description: "Smart Volunteers Group",
-    siteId: "1467726470533754880",
-    creator: "@nextjs",
-    creatorId: "1467726470533754880",
-    images: ["https://i.ibb.co/7VRM64d/image-2024-03-05-122753434.png"], // Must be an absolute URL
-  },
-};
+const roboto = Roboto({
+  subsets: ["latin-ext"],
+  weight: ["400", "700"],
+});
 
-export default function layout({
+export default function RootLayout({
   children,
   params: { lang },
 }: Readonly<{
@@ -25,10 +15,12 @@ export default function layout({
   params: { lang: "eng" | "kur" };
 }>) {
   return (
-    <>
-      <Navbar lang={lang} />
-      <div className="m-auto max-w-[2000px] p-6">{children}</div>
-      <NextTopLoader color="white" />
-    </>
+    <html lang={lang === "kur" ? "ku" : "en"} suppressHydrationWarning>
+      <body className={`${roboto.className} font-sans`}>
+        <Navbar lang={lang} />
+        <div className="m-auto max-w-[2000px] p-6">{children}</div>
+        <NextTopLoader color="white" />
+      </body>
+    </html>
   );
 }
