@@ -24,20 +24,20 @@ export default async function page() {
       {posts.map((post, index: number) => (
         <Card
           key={index}
-          className=" flex w-[300px] flex-col items-center gap-3 pt-4 text-right md:w-[600px]"
+          className=" flex w-[300px] flex-col items-center gap-3 text-right md:w-[600px]"
         >
-          <CardHeader>
-            <h2 className="text-xl">{post.title}</h2>
+          <CardHeader className="p-2 ">
+            <h2 className="text-base md:text-xl">{post.title}</h2>
           </CardHeader>
-          <CardContent className="flex flex-col items-center gap-3">
+          <CardContent className="flex flex-col items-center gap-3 p-0 px-6">
             <div className="flex flex-col items-center">
               <CarouselPlugin images={post.photo} />
             </div>
           </CardContent>
-          <CardFooter className="max-h-48 w-full items-start justify-end overflow-x-auto overflow-y-auto p-0 ">
-            <pre className="w-full font-sans text-xs lg:text-base">
+          <CardFooter>
+            <p className="w-full font-sans text-xs lg:text-base">
               {post.content}
-            </pre>
+            </p>
           </CardFooter>
         </Card>
       ))}

@@ -19,7 +19,6 @@ export function CarouselPlugin({ images }: { images: string[] }) {
 
   return (
     <Carousel
-      className="w-full "
       plugins={[plugin.current]}
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
