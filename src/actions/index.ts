@@ -8,9 +8,12 @@ import { notFound, redirect } from "next/navigation";
 export async function getProfile(id: string) {
   if (!id) return notFound();
 
-  const res = await fetch(`${ApiURL}/members/${id}`, {
-    next: { revalidate: 300 },
-  });
+  const res = await fetch(
+    `${ApiURL}/members/${id}?select=-college,-sos,-stage`,
+    {
+      next: { revalidate: 300 },
+    },
+  );
 
   const json = await res.json();
 

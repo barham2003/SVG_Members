@@ -46,7 +46,14 @@ export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
           type="text"
           className={`${isKrd ? "text-right" : ""} text-lg`}
           name="name"
-          placeholder={isKrd ? "ناوی سیانی" : "Full Name"}
+          placeholder={isKrd ? " ناوی سیانی بە کوردی" : "Full Name in Kurdish"}
+        />
+        <Input
+          required
+          type="text"
+          className={`${isKrd ? "text-right" : ""} text-lg`}
+          name="name"
+          placeholder={isKrd ? "ناوی سیانی بە ئینگلزی" : "Full Name in English"}
         />
 
         <Input

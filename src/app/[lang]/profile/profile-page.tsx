@@ -94,25 +94,9 @@ export default function ProfilePage({
             <h2 className="text-2xl underline underline-offset-4">
               {isKrd ? "زانیاری گشتی" : "General Info"}
             </h2>
+
             <li>
-              {isKrd ? <>{member.stage} :قۆناغ</> : <>Stage:{member.stage}</>}
-            </li>
-            <li>
-              {isKrd ? (
-                <>{member.sos} :باری خوێندن</>
-              ) : (
-                <>State of Study: {member.sos}</>
-              )}
-            </li>
-            <li>
-              {isKrd ? (
-                <>{member.college} :کۆلێژ</>
-              ) : (
-                <>College: {member.college}</>
-              )}
-            </li>
-            <li>
-              {isKrd ? <>{member.work} :پیشە</> : <>Work: {member.work}</>}
+              {isKrd ? <> پیشە: {member.work} </> : <>Work: {member.work}</>}
             </li>
 
             <li>
