@@ -2,7 +2,6 @@
 import "dotenv";
 import { cookies } from "next/headers";
 const ApiURL = process.env.API_URL;
-// import { signIn, signOut } from "@/app/auth";
 import { notFound, redirect } from "next/navigation";
 
 export async function getProfile(id: string) {
