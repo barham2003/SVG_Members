@@ -3,7 +3,7 @@ import "dotenv";
 import { cookies } from "next/headers";
 const ApiURL = process.env.API_URL;
 import { notFound, redirect } from "next/navigation";
-
+import * as z from "zod";
 export async function getProfile(id: string) {
   if (!id) return notFound();
 
@@ -83,6 +83,43 @@ export async function addForm(
     },
     body: JSON.stringify(data),
   });
+  const json = await res.json();
+  if (res.ok) return { message: "Done", status: "success" };
+  if (!res.ok) return { message: json.message, status: "error" };
+
+  return { message: "", status: "success" };
+}
+
+const reportSchema = z.object({
+  title: z.string().min(3).max(100),
+  content: z.string().min(3).max(1000),
+  member: z.string().min(3).max(100),
+});
+
+export async function addReport(
+  formState: FormProps,
+  formData: FormData,
+): Promise<FormProps> {
+  const memberId = cookies().get("id")?.value;
+  console.log(memberId);
+  if (!memberId) return { message: "login", status: "error" };
+
+  const report = reportSchema.safeParse({
+    title: formData.get("title"),
+    content: formData.get("content"),
+    member: memberId,
+  });
+
+  if (!report.success) return { message: "validation", status: "error" };
+
+  const res = await fetch(`${ApiURL}/reports`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(report.data),
+  });
+
   const json = await res.json();
   if (res.ok) return { message: "Done", status: "success" };
   if (!res.ok) return { message: json.message, status: "error" };

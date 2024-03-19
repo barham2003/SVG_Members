@@ -2,7 +2,11 @@ import { DataTable } from "./activity-table";
 import { Krdcolumns, columns } from "./columns";
 import { twMerge } from "tailwind-merge";
 import FormButton from "@/components/ui/form-button";
-import { Logout } from "@/actions";
+import { Logout, addReport } from "@/actions";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import AddReportForm from "./add-report-form";
+import { cn } from "@/lib/utils";
 
 export default function ProfilePage({
   lang,
@@ -17,11 +21,21 @@ export default function ProfilePage({
       <div className="flex flex-col justify-start  gap-4 text-xs lg:text-lg">
         <div className=" flex flex-col justify-start gap-4">
           <h1 className="text-2xl">{member.name}</h1>
-          <form action={Logout.bind(null, lang)}>
-            <FormButton variant="destructive">
-              {isKrd ? "چوونە دەرەوە" : "Sign Out"}
-            </FormButton>
-          </form>
+          <div className={cn("flex  gap-2", isKrd && "flex-row-reverse")}>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>{isKrd ? "ناردنی ڕیپۆرت" : "Add Report"}</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <AddReportForm lang={lang} />
+              </DialogContent>
+            </Dialog>
+            <form action={Logout.bind(null, lang)}>
+              <FormButton variant="destructive">
+                {isKrd ? "چوونە دەرەوە" : "Sign Out"}
+              </FormButton>
+            </form>
+          </div>
         </div>
 
         <div
