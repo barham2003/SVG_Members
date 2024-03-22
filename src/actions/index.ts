@@ -43,8 +43,6 @@ export async function Login(formState: AnotherFormProps, FormData: FormData) {
   cookies().set("id", json.data._id, {
     path: "/",
     maxAge: 60 * 60 * 24 * 30,
-    sameSite: "strict",
-    secure: true,
     httpOnly: true,
   });
   return json;
@@ -52,7 +50,7 @@ export async function Login(formState: AnotherFormProps, FormData: FormData) {
 
 export async function Logout(lang: "ku" | "en") {
   cookies().delete("id");
-  return redirect(`/${lang}/profile`);
+  return redirect(`/profile`);
 }
 
 export async function getSessionId(): Promise<null | string> {
