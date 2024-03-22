@@ -1,8 +1,8 @@
-import ParamsType from "../paramsType";
+import { getLang } from "@/actions";
 import RegisterForm from "./register-form";
-export default function Page({ params: { lang } }: ParamsType) {
+export default async function Page() {
+  const lang = await getLang();
   const isKrd = lang === "ku";
-
   return (
     <div className=" flex min-h-[80dvh] items-center justify-center">
       <RegisterForm isKrd={isKrd} />
