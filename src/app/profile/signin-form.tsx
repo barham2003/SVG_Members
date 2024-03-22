@@ -39,10 +39,7 @@ export default function SigninForm({ lang }: { lang: "ku" | "en" }) {
         </div>
 
         <p className={twMerge("w-full text-left", isKrd && "text-right")}>
-          <Link
-            href={isKrd ? "/ku/register" : "/en/register"}
-            className=" text-right text-[#042c61]"
-          >
+          <Link href="/register" className=" text-right text-[#042c61]">
             {isKrd ? "کلیك لێرە بکە بۆ بەشداری کردن" : "Click here to Sign Up"}
           </Link>
         </p>

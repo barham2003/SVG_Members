@@ -43,12 +43,12 @@ export default async function Home() {
             <div
               className={twMerge("flex w-full gap-4", isku && "justify-end")}
             >
-              <Link href={`/${lang}/activities`}>
+              <Link href={`/activities`}>
                 <Button className="text-lg font-semibold md:text-xl">
                   {isku ? "چالاكیەکانمان" : "Our Activities"}
                 </Button>
               </Link>
-              <Link href={`/${lang}/register`}>
+              <Link href={`/register`}>
                 <Button className="text-lg font-semibold md:text-xl">
                   {isku ? "بەشداری کردن" : "Register"}
                 </Button>
