@@ -20,11 +20,11 @@ interface Post {
 export default async function page() {
   const posts: Post[] = await getActivities();
   return (
-    <div className="flex flex-col items-center gap-3 text-right">
+    <div className="flex flex-col items-center gap-20 text-right">
       {posts?.map((post, index: number) => (
         <Card
           key={index}
-          className=" flex w-[300px] flex-col items-center gap-3 text-right md:w-[600px]"
+          className=" flex w-[300px] flex-col items-center gap-3 border-0 text-right shadow-none md:w-[600px]"
         >
           <CardHeader className="p-2 ">
             <h2 className="text-base md:text-xl">{post.title}</h2>
@@ -46,7 +46,7 @@ export default async function page() {
 }
 
 export async function generateStaticParams() {
-  const langs = ["kur", "eng"];
+  const langs = ["ku", "en"];
 
   return langs.map((lang: any) => {
     return {

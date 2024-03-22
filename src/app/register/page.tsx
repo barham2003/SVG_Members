@@ -1,7 +1,7 @@
 import ParamsType from "../paramsType";
 import RegisterForm from "./register-form";
 export default function Page({ params: { lang } }: ParamsType) {
-  const isKrd = lang === "kur";
+  const isKrd = lang === "ku";
 
   return (
     <div className=" flex min-h-[80dvh] items-center justify-center">
@@ -11,7 +11,7 @@ export default function Page({ params: { lang } }: ParamsType) {
 }
 
 export async function generateStaticParams() {
-  const langs = ["kur", "eng"];
+  const langs = ["ku", "en"];
 
   return langs.map((lang: any) => {
     return {

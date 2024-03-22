@@ -50,7 +50,7 @@ export async function Login(formState: AnotherFormProps, FormData: FormData) {
   return json;
 }
 
-export async function Logout(lang: "kur" | "eng") {
+export async function Logout(lang: "ku" | "en") {
   cookies().delete("id");
   return redirect(`/${lang}/profile`);
 }
@@ -125,4 +125,21 @@ export async function addReport(
   if (!res.ok) return { message: json.message, status: "error", id: "error" };
 
   return { message: "IDK", status: "success", id: json.data._id };
+}
+
+export async function changeLang(lang: "ku" | "en") {
+  cookies().set("lang", lang, {
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30,
+    sameSite: "strict",
+    secure: true,
+    httpOnly: true,
+  });
+  return redirect(`/profile`);
+}
+
+export async function getLang(): Promise<"ku" | "en"> {
+  const lang = cookies().get("lang")?.value as "ku" | "en";
+  if (!lang) return "ku";
+  return lang;
 }

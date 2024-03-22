@@ -1,7 +1,7 @@
 export default function sitemap() {
   const base = "https://www.smartvolunteersgroup.com";
-  const krdUrl = "https://www.smartvolunteersgroup.com/kur";
-  const engUrl = "https://www.smartvolunteersgroup.com/eng";
+  const krdUrl = "https://www.smartvolunteersgroup.com/ku";
+  const enUrl = "https://www.smartvolunteersgroup.com/en";
   return [
     {
       url: base,
@@ -12,11 +12,11 @@ export default function sitemap() {
       lastModified: new Date(),
     },
     {
-      url: engUrl,
+      url: enUrl,
       lastModified: new Date(),
     },
     {
-      url: `${engUrl}/activities`,
+      url: `${enUrl}/activities`,
       lastModified: new Date(),
     },
     {

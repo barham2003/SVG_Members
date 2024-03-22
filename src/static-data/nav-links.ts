@@ -3,17 +3,17 @@ interface NavItem {
   href: string;
 }
 
-export function getNavLinks(lang: "kur" | "eng"): NavItem[] {
-  if (lang === "kur")
+export function getNavLinks(lang: "ku" | "en"): NavItem[] {
+  if (lang === "ku")
     return [
-      { item: "سەرەکی", href: `/${lang}/` },
-      { item: "پرۆفایڵ", href: `/${lang}/profile` },
-      { item: "چالاكیەکان", href: `/${lang}/activities` },
+      { item: "سەرەکی", href: `/` },
+      { item: "پرۆفایڵ", href: `/profile` },
+      { item: "چالاكیەکان", href: `/activities` },
     ];
 
   return [
-    { item: "Home", href: `/${lang}/` },
-    { item: "Profile", href: `/${lang}/profile` },
-    { item: "Activities", href: `/${lang}/activities` },
+    { item: "Home", href: `/` },
+    { item: "Profile", href: `/profile` },
+    { item: "Activities", href: `/activities` },
   ];
 }

@@ -22,7 +22,7 @@ import { useEffect } from "react";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  lang: "kur" | "eng";
+  lang: "ku" | "en";
 }
 
 export function DataTable<TData, TValue>({
@@ -52,7 +52,7 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       key={header.id}
-                      className={`${lang === "kur" && "text-right"}`}
+                      className={`${lang === "ku" && "text-right"}`}
                     >
                       {header.isPlaceholder
                         ? null
@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows?.lenth ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -85,10 +85,7 @@ export function DataTable<TData, TValue>({
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={columns.lenth} className="h-24 text-center">
                   No results.
                 </TableCell>
               </TableRow>

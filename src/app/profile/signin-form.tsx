@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import { twMerge } from "tailwind-merge";
 
-export default function SigninForm({ lang }: { lang: "kur" | "eng" }) {
-  const isKrd = lang === "kur";
+export default function SigninForm({ lang }: { lang: "ku" | "en" }) {
+  const isKrd = lang === "ku";
   const [state, FormAction] = useFormState(Login, { message: "" });
   return (
     <div className="flex w-full flex-col items-center gap-3">
@@ -40,7 +40,7 @@ export default function SigninForm({ lang }: { lang: "kur" | "eng" }) {
 
         <p className={twMerge("w-full text-left", isKrd && "text-right")}>
           <Link
-            href={isKrd ? "/kur/register" : "/eng/register"}
+            href={isKrd ? "/ku/register" : "/en/register"}
             className=" text-right text-[#042c61]"
           >
             {isKrd ? "کلیك لێرە بکە بۆ بەشداری کردن" : "Click here to Sign Up"}

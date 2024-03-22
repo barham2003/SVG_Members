@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
-export default function AddReportForm({ lang }: { lang: "kur" | "eng" }) {
+export default function AddReportForm({ lang }: { lang: "ku" | "en" }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [{ message, status, id }, formAction] = useFormState(addReport, {
     message: "",
@@ -27,16 +27,16 @@ export default function AddReportForm({ lang }: { lang: "kur" | "eng" }) {
 
   if (message === "validation") {
     convertedMessage =
-      lang === "kur"
+      lang === "ku"
         ? "زانیاریەکان بە تەواوی پڕەوە بکە"
         : "Validation error, please fill in the form correctly.";
   } else if (message === "Done") {
     convertedMessage =
-      lang === "kur"
+      lang === "ku"
         ? "ڕیپۆرتەکەت بە سەرکەوتووی نێردرا"
         : "Your report has been submitted suceessfully.";
   } else if (message === "login") {
-    convertedMessage = lang === "kur" ? "داخل بە" : "Sign In";
+    convertedMessage = lang === "ku" ? "داخل بە" : "Sign In";
   } else {
     convertedMessage = "هەڵەیەك ڕوویدا..";
   }
@@ -48,7 +48,7 @@ export default function AddReportForm({ lang }: { lang: "kur" | "eng" }) {
           className={cn(
             " border-green-600 text-green-600",
             status === "error" && "border-red-600 text-red-600",
-            lang === "kur" && "text-right",
+            lang === "ku" && "text-right",
           )}
         >
           {convertedMessage}
@@ -57,15 +57,15 @@ export default function AddReportForm({ lang }: { lang: "kur" | "eng" }) {
       <Input
         type="text"
         name="title"
-        className={cn(lang === "kur" && "text-right")}
-        placeholder={lang === "kur" ? "بابەت" : "Title"}
+        className={cn(lang === "ku" && "text-right")}
+        placeholder={lang === "ku" ? "بابەت" : "Title"}
       />
       <Textarea
         name="content"
-        className={cn(lang === "kur" && "text-right")}
-        placeholder={lang === "kur" ? "وردەکاریەکان" : "Content"}
+        className={cn(lang === "ku" && "text-right")}
+        placeholder={lang === "ku" ? "وردەکاریەکان" : "Content"}
       />
-      <FormButton>{lang === "kur" ? "ناردنی ڕیپۆرت" : "Add Report"}</FormButton>
+      <FormButton>{lang === "ku" ? "ناردنی ڕیپۆرت" : "Add Report"}</FormButton>
     </form>
   );
 }

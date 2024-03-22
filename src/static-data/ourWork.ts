@@ -7,8 +7,8 @@ interface Work {
   text: string;
   img: any;
 }
-export function getOurWork(lang: "kur" | "eng"): Work[] {
-  if (lang === "kur") {
+export function getOurWork(lang: "ku" | "en"): Work[] {
+  if (lang === "ku") {
     return [
       {
         text: "١ - هاوکاری کردنی کەسانی هەژار و کەم دەرامەت لە پێناو باشترکردنی حاڵ و گوزەرانیان",
@@ -39,7 +39,7 @@ export function getOurWork(lang: "kur" | "eng"): Work[] {
       img: helpStudent,
     },
     {
-      text: "3. Conducting events and activities to strengthen the level of awareness of the society in general and the youth in particular.",
+      text: "3. Conducting events and activities to strenthen the level of awareness of the society in general and the youth in particular.",
       img: seminar,
     },
     {
@@ -49,8 +49,8 @@ export function getOurWork(lang: "kur" | "eng"): Work[] {
   ];
 }
 
-export function workDefintion(lang: "kur" | "eng") {
-  if (lang === "kur")
+export function workDefintion(lang: "ku" | "en") {
+  if (lang === "ku")
     return "کارەکانی ئێمە هەمە جۆرە و هەوڵمانداوە لە زۆربەی کایەکانی ژیانەوە یارمەتی شارەکەمان بدەین، لیستی بەشێك لەو جۆرە چالاکیانەی ساڵانە ئەنجامی دەدەین";
 
   return "Our work is diverse and we have tried to help our city in many areas of life, examples are: ";

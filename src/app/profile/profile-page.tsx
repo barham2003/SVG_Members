@@ -12,10 +12,10 @@ export default function ProfilePage({
   lang,
   member,
 }: {
-  lang: "kur" | "eng";
+  lang: "ku" | "en";
   member: any;
 }) {
-  const isKrd = lang === "kur";
+  const isKrd = lang === "ku";
   return (
     <>
       <div className="flex flex-col justify-start  gap-4 text-xs lg:text-lg">
