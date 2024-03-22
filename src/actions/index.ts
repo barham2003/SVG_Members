@@ -1,5 +1,6 @@
 "use server";
 import "dotenv";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 const ApiURL = process.env.API_URL;
 import { notFound, redirect } from "next/navigation";
@@ -135,11 +136,10 @@ export async function changeLang(lang: "ku" | "en") {
     secure: true,
     httpOnly: true,
   });
-  return redirect(`/profile`);
 }
 
 export async function getLang(): Promise<"ku" | "en"> {
-  const lang = cookies().get("lang")?.value as "ku" | "en";
+  const lang = cookies().get("lang")?.value;
   if (!lang) return "ku";
-  return lang;
+  return lang as "ku" | "en";
 }

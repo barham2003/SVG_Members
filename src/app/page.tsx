@@ -11,8 +11,8 @@ export default async function Home() {
   const lang = await getLang();
   const defenition = getDefinition(lang);
   const ourWorks = getOurWork(lang);
-  const isku = lang === "ku";
   const workDef = workDefintion(lang);
+  const isku = lang === "ku";
 
   return (
     <main>
