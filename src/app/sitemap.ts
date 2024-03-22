@@ -6,7 +6,7 @@ export default function sitemap() {
       lastModified: new Date(),
     },
     {
-      url: `/activities`,
+      url: `${base}/activities`,
       lastModified: new Date(),
     },
   ];
