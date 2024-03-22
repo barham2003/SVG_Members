@@ -43,6 +43,8 @@ export async function Login(formState: AnotherFormProps, FormData: FormData) {
   cookies().set("id", json.data._id, {
     path: "/",
     maxAge: 60 * 60 * 24 * 30,
+    sameSite: "strict",
+    secure: true,
     httpOnly: true,
   });
   return json;
