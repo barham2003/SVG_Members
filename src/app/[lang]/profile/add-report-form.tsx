@@ -11,16 +11,17 @@ import { useFormState, useFormStatus } from "react-dom";
 
 export default function AddReportForm({ lang }: { lang: "kur" | "eng" }) {
   const formRef = useRef<HTMLFormElement>(null);
-  const [{ message, status }, formAction] = useFormState(addReport, {
+  const [{ message, status, id }, formAction] = useFormState(addReport, {
     message: "",
     status: "",
+    id: "",
   });
 
   useEffect(() => {
-    if (status === "success" || message === "Done") {
+    if (formRef.current) {
       formRef.current?.reset();
     }
-  }, [status, message]);
+  }, [id]);
 
   let convertedMessage;
 

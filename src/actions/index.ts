@@ -73,9 +73,11 @@ export async function getActivities() {
 export async function addForm(
   formState: FormProps,
   formData: FormData,
-): Promise<FormProps> {
+): Promise<FormProps & { id?: string }> {
   const data = Object.fromEntries(formData);
   console.log(data);
+  if (!data.gender)
+    return { message: "validation", status: "error", id: "valerror" };
   const res = await fetch(`${ApiURL}/forms`, {
     method: "POST",
     headers: {
@@ -84,10 +86,10 @@ export async function addForm(
     body: JSON.stringify(data),
   });
   const json = await res.json();
-  if (res.ok) return { message: "Done", status: "success" };
-  if (!res.ok) return { message: json.message, status: "error" };
+  if (res.ok) return { message: "Done", status: "success", id: json.data._id };
+  if (!res.ok) return { message: json.message, status: "error", id: "" };
 
-  return { message: "", status: "success" };
+  return { message: "", status: "success", id: json.data._id };
 }
 
 const reportSchema = z.object({
@@ -99,10 +101,9 @@ const reportSchema = z.object({
 export async function addReport(
   formState: FormProps,
   formData: FormData,
-): Promise<FormProps> {
+): Promise<FormProps & { id: string }> {
   const memberId = cookies().get("id")?.value;
-  console.log(memberId);
-  if (!memberId) return { message: "login", status: "error" };
+  if (!memberId) return { message: "login", status: "error", id: "membernot" };
 
   const report = reportSchema.safeParse({
     title: formData.get("title"),
@@ -110,19 +111,18 @@ export async function addReport(
     member: memberId,
   });
 
-  if (!report.success) return { message: "validation", status: "error" };
+  if (!report.success)
+    return { message: "validation", status: "error", id: "valerror" };
 
   const res = await fetch(`${ApiURL}/reports`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(report.data),
   });
 
   const json = await res.json();
-  if (res.ok) return { message: "Done", status: "success" };
-  if (!res.ok) return { message: json.message, status: "error" };
+  if (res.ok) return { message: "Done", status: "success", id: json.data._id };
+  if (!res.ok) return { message: json.message, status: "error", id: "error" };
 
-  return { message: "", status: "success" };
+  return { message: "IDK", status: "success", id: json.data._id };
 }

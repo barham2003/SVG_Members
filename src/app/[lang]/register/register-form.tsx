@@ -12,17 +12,19 @@ import {
 import { cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
 export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
-  const [{ message, status }, formAction] = useFormState(addForm, {
+  const [{ message, status, id }, formAction] = useFormState(addForm, {
     message: "",
     status: "",
+    id: "new",
   });
 
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
-    if (status === "success" && formRef.current) {
+    console.log(id);
+    if (formRef.current) {
       formRef.current.reset();
     }
-  }, [status]);
+  }, [id]);
 
   return (
     <div className="flex w-full flex-col items-center">
@@ -35,7 +37,12 @@ export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
           {isKrd ? "بەشداربە لەگەڵماندا" : "Join Us"}
         </h1>
         {message && message === "Done" && (
-          <span>
+          <span
+            className={cn(
+              status === "success" && "text-green-800",
+              status === "error" && "text-red-800",
+            )}
+          >
             {isKrd
               ? "فۆڕمەکەت بە سەرکەوتووی نێردرا"
               : "Your form has been submitted suceessfully."}
@@ -97,25 +104,28 @@ export default function RegisterForm({ isKrd }: { isKrd: boolean }) {
           />
         </label>
 
-        <Select name="gender">
-          <SelectTrigger className={isKrd ? "flex-row-reverse" : ""}>
-            <SelectValue placeholder={isKrd ? "ڕەگەز" : "Gender"} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem
-              className={isKrd ? "flex-row-reverse" : ""}
-              value="male"
-            >
-              {isKrd ? "نێر" : "Male"}
-            </SelectItem>
-            <SelectItem
-              className={isKrd ? "flex-row-reverse" : ""}
-              value="female"
-            >
-              {isKrd ? "مێ" : "Female"}
-            </SelectItem>
-          </SelectContent>
-        </Select>
+        <label className={cn("w-full", isKrd && "text-right")}>
+          <span className="px-2">{isKrd ? ":ڕەگەز" : "Gender:"}</span>
+          <Select name="gender" defaultValue="male">
+            <SelectTrigger className={isKrd ? "flex-row-reverse" : ""}>
+              <SelectValue placeholder={isKrd ? "ڕەگەز" : "Gender"} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem
+                className={isKrd ? "flex-row-reverse" : ""}
+                value="male"
+              >
+                {isKrd ? "نێر" : "Male"}
+              </SelectItem>
+              <SelectItem
+                className={isKrd ? "flex-row-reverse" : ""}
+                value="female"
+              >
+                {isKrd ? "مێ" : "Female"}
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </label>
 
         <Input
           required
