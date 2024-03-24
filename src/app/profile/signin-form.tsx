@@ -31,7 +31,7 @@ export default function SigninForm({ lang }: { lang: "ku" | "en" }) {
             name="id"
             className={isKrd ? "text-right" : "text-left"}
             placeholder={
-              isKrd ? "ئایدیەکەت لێرەدا بنووسە" : "Write your ID here"
+              isKrd ? "کۆدەکەت لێرەدا بنووسە" : "Write your Code here"
             }
           />
           <input type="text" name="lang" defaultValue={lang} hidden />
