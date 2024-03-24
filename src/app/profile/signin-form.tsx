@@ -46,7 +46,7 @@ export default function SigninForm({ lang }: { lang: "ku" | "en" }) {
         {state.message && (
           <Alert variant="destructive" className=" flex justify-center">
             <AlertDescription>
-              {isKrd ? "ئایدیەکەت نەدۆزرایەوە" : state.message}
+              {isKrd ? "کۆدەکەت نەدۆزرایەوە" : "Code not found"}
             </AlertDescription>
           </Alert>
         )}
